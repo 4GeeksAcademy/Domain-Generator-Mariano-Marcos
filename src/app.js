@@ -44,23 +44,44 @@ window.onload = function() {
 
   let extension = ["com", "co", "us", "com.mx", "es", "io"];
 
+  let icon = [
+    `<i class="fa-solid fa-user-ninja"></i>`,
+    '<i class="fa-solid fa-glasses"></i>',
+    '<i class="fa-solid fa-hat-wizard"></i>',
+    '<i class="fa-solid fa-om"></i>',
+    '<i class="fa-solid fa-hands-praying"></i>',
+    '<i class="fa-solid fa-brain"></i>',
+    '<i class="fa-solid fa-trophy"></i>',
+    '<i class="fa-solid fa-user-tie"></i>',
+    '<i class="fa-solid fa-building"></i>',
+    '<i class="fa-solid fa-baby-carriage"></i>',
+    '<i class="fa-regular fa-compass"></i>',
+    '<i class="fa-solid fa-flag-checkered"></i>',
+    '<i class="fa-brands fa-space-awesome"></i>',
+    '<i class="fa-brands fa-reddit-alien"></i>'
+  ];
+
   console.log("Hello Rigo from the console!");
 
-  function arraySelector(array) {
-    let element = array[Math.floor(Math.random() * array.length)];
-    return element;
+  function arrayIndex(array) {
+    let index = Math.floor(Math.random() * array.length);
+    return index;
   }
 
-  // Generates a new domain when the button is clicked
+  // Function that creates random domains
   function domainGenerator() {
-    let domain = `${arraySelector(pronoun)}${arraySelector(adj)}${arraySelector(
-      noun
-    )}.<strong>${arraySelector(extension)}</strong>`;
+    let nounAndIcon = arrayIndex(noun);
+    let domain = `${pronoun[arrayIndex(pronoun)]}${adj[arrayIndex(adj)]}${
+      noun[nounAndIcon]
+    }.<strong>${extension[arrayIndex(extension)]}</strong>   <strong>${
+      icon[nounAndIcon]
+    }</strong>`;
     return domain;
   }
-
+  //generates a random domain when the website is first loaded
   document.getElementById("domain").innerHTML = domainGenerator();
 
+  //Generates a random domain everytime the Generate button is pressed
   document
     .getElementById("generateButton")
     .addEventListener("click", function() {
